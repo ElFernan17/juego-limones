@@ -12,7 +12,7 @@ let personajeX = canvas.width/2;
 let personajeY = alturaSuelo - alturaPersonaje
 
 let limonX = 200;
-let limonY = -10;
+let limonY = 0;
 
 function limpiarCanva(){
     context.clearRect(0,0,600,400)
@@ -30,7 +30,7 @@ function iniciarEjecucion(){
 
     dibujarSuelo();
 
-    dibujarLimon();
+    aparecerLimon();
 }
 
 function dibujarPersonaje(){
@@ -51,23 +51,42 @@ function dibujarLimon(){
 function moverIzquierda(){
     personajeX = personajeX - 10
     actualizarPantalla();
-    detectarColision();
 }
 
 function moverDerecha(){
     personajeX = personajeX + 10
     actualizarPantalla();
-    detectarColision();
 }
 
 function bajarLimon(){
     limonY = limonY + 10
     actualizarPantalla();
+    detectarColision();
 }
 
 function detectarColision(){
     if (limonX >= personajeX - 10 && limonX <= personajeX + 30 && limonY >= personajeY -10 && limonY <= personajeY + 50){
-        alert("atrapado!!")
+        aparecerLimon();
     }
 }
 
+function generarAleatorio(min,max){
+    let random = Math.random();
+    let numero = random * (max - min)
+
+    let numeroEntero = Math.ceil(numero)
+    numeroEntero = numeroEntero + min
+
+    return numeroEntero
+}
+
+function probarAleatorio(){
+    let aleatorio = generarAleatorio(10,80);
+    console.log(aleatorio);
+}
+
+function aparecerLimon(){
+    limonX = generarAleatorio(-1,canvas.width - anchoLimon);
+    limonY = 0
+    actualizarPantalla();
+}
