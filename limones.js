@@ -1,17 +1,18 @@
 let canvas = document.getElementById("areaJuego");
 let context = canvas.getContext("2d");
 
-const alturaSuelo = 350;
-const alturaPersonaje = 30;
-const anchoPersonaje = 15;
+const alturaSuelo = 360;
+const alturaPersonaje = 60;
+const anchoPersonaje = 40;
 
-const anchoLimon = 15
-const altoLimon = 15
+const anchoLimon = 20
+const altoLimon = 20
 
 let personajeX = canvas.width/2;
+let personajeY = alturaSuelo - alturaPersonaje
 
-let limonX = 0;
-let limonY = 5;
+let limonX = 200;
+let limonY = -10;
 
 function limpiarCanva(){
     context.clearRect(0,0,600,400)
@@ -34,7 +35,7 @@ function iniciarEjecucion(){
 
 function dibujarPersonaje(){
     context.fillStyle = "pink";
-    context.fillRect(personajeX,320,anchoPersonaje,alturaPersonaje);
+    context.fillRect(personajeX,personajeY,anchoPersonaje,alturaPersonaje);
 }
 
 function dibujarSuelo(){
@@ -50,15 +51,23 @@ function dibujarLimon(){
 function moverIzquierda(){
     personajeX = personajeX - 10
     actualizarPantalla();
+    detectarColision();
 }
 
 function moverDerecha(){
     personajeX = personajeX + 10
     actualizarPantalla();
+    detectarColision();
 }
 
 function bajarLimon(){
     limonY = limonY + 10
     actualizarPantalla();
+}
+
+function detectarColision(){
+    if (limonX >= personajeX - 10 && limonX <= personajeX + 30 && limonY >= personajeY -10 && limonY <= personajeY + 50){
+        alert("atrapado!!")
+    }
 }
 
