@@ -11,7 +11,7 @@ const altoLimon = 15
 let personajeX = canvas.width/2;
 
 let limonX = 0;
-let limonY = 0;
+let limonY = 5;
 
 function limpiarCanva(){
     context.clearRect(0,0,600,400)
@@ -21,6 +21,7 @@ function actualizarPantalla(){
     limpiarCanva();
     dibujarPersonaje();
     dibujarSuelo();
+    dibujarLimon();
 }
 
 function iniciarEjecucion(){
@@ -57,6 +58,7 @@ function moverDerecha(){
 }
 
 function bajarLimon(){
-    limonY = limonY - 5
+    limonY = limonY + 10
+    actualizarPantalla();
 }
 
