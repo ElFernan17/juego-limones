@@ -19,6 +19,8 @@ let vidas = 3;
 
 let velocidadCaida = 200
 
+let intervalo
+
 function limpiarCanva(){
     context.clearRect(0,0,600,400)
 }
@@ -31,7 +33,7 @@ function actualizarPantalla(){
 }
 
 function iniciarEjecucion(){
-    setInterval(bajarLimon,velocidadCaida)
+    intervalo = setInterval(bajarLimon,velocidadCaida)
 
     dibujarPersonaje();
 
@@ -79,6 +81,17 @@ function detectarAtrapado(){
 
         let componente = document.getElementById("txtPuntaje");
     componente.textContent = puntaje;
+
+    if (puntaje >= 3){
+        velocidadCaida = 150
+    }
+    if (puntaje >= 6){
+        velocidadCaida = 100
+    }
+    if (puntaje == 10){
+        alert("Eres el ganador !Hora de hacer LIMONADA¡¡")
+        detenerIntervalo();
+    }
     }
 }
 
@@ -88,6 +101,11 @@ function detectarPiso(){
         vidas = vidas - 1;
         let componente = document.getElementById("txtVidas");
     componente.textContent = vidas;
+
+    if (vidas <= 0){
+        alert("GAME OVER")
+        detenerIntervalo();
+    }
     }
 }
 
@@ -106,4 +124,23 @@ function aparecerLimon(){
     limonX = generarAleatorio(-1,canvas.width - anchoLimon);
     limonY = 0
     actualizarPantalla();
+}
+
+function detenerIntervalo(){
+    clearInterval(intervalo);
+}
+
+function reiniciar(){
+    puntaje = 0
+    vidas = 3
+
+    let componenteA = document.getElementById("txtPuntaje");
+    componenteA.textContent = puntaje;
+
+    let componenteB = document.getElementById("txtVidas");
+    componenteB.textContent = vidas;
+
+    iniciarEjecucion();
+
+    detenerIntervalo();
 }
