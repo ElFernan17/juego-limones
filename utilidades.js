@@ -7,3 +7,8 @@ function generarAleatorio(min,max){
 
     return numeroEntero
 }
+
+function mostrarEnSpan(idSpan, textoSpan){
+    let componente = document.getElementById("idSpan");
+    componente.textContent = textoSpan;
+}
