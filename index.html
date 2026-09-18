@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <title>Atrapar Limones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="limones.css">
-  <canvas id="areaJuego" width="600" height="400"></canvas>
- 
 </head>
 <body onload="iniciarEjecucion();">
   <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    
+
+    <header class="cabecera">
+      <h1><span class="icono-titulo" aria-hidden="true">🍋</span>Atrapar Limones</h1>
+      <p class="subtitulo">Si del cielo te caen limones, ¡mejor atrápalos antes de que se hagan puré!</p>
+    </header>
+
     <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
+      <div class="chip chip-puntaje">
+        <span class="chip-icono" aria-hidden="true">🍋</span>
+        <span class="chip-texto">Puntaje: <span id="txtPuntaje">0</span></span>
+      </div>
+      <div class="chip chip-vidas">
+        <span class="chip-icono" aria-hidden="true">❤️</span>
+        <span class="chip-texto">Vidas: <span id="txtVidas">3</span></span>
+      </div>
     </div>
+
+    <div class="marco-juego">
+      <div class="marco-juego__luz"></div>
+      <canvas id="areaJuego" width="600" height="400"></canvas>
+    </div>
+
     <div class="botones">
-      <button onclick="moverIzquierda();">Izquierda</button>
-      <button onclick="moverDerecha();">Derecha</button>
-      <button onclick="reiniciar();">Reiniciar</button>
+      <button class="boton boton-mover" onclick="moverIzquierda();">
+        <span aria-hidden="true">◀</span> Izquierda
+      </button>
+      <button class="boton boton-reiniciar" onclick="reiniciar();">
+        ⟳ Reiniciar
+      </button>
+      <button class="boton boton-mover" onclick="moverDerecha();">
+        Derecha <span aria-hidden="true">▶</span>
+      </button>
     </div>
+
   </div>
 <script src="limones.js"></script>
 </body>

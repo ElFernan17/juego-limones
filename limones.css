@@ -1,31 +1,199 @@
+:root {
+  --cielo-profundo: #170f2e;
+  --cielo-medio: #3a1d6e;
+  --cielo-horizonte: #6a2f8f;
+  --limon: #f6d51f;
+  --limon-oscuro: #d4af0d;
+  --hoja: #7cb928;
+  --hoja-oscura: #4a6b16;
+  --crema: #fdf6e3;
+  --tinta: #170f2e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
-  text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 32px 16px 48px;
+  min-height: 100vh;
+  font-family: 'Nunito', system-ui, sans-serif;
+  color: var(--crema);
+  text-align: center;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(246, 213, 31, 0.10), transparent 40%),
+    repeating-radial-gradient(circle at 8% 20%, rgba(255,255,255,0.55) 0 1px, transparent 1px 46px),
+    repeating-radial-gradient(circle at 70% 60%, rgba(255,255,255,0.35) 0 1px, transparent 1px 60px),
+    linear-gradient(180deg, var(--cielo-profundo) 0%, var(--cielo-medio) 55%, var(--cielo-horizonte) 100%);
+  background-attachment: fixed;
 }
 
 .contenedor {
-  max-width: 800px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
-canvas {
-  background-color: #111827;
-  border: 3px solid #38bdf8;
-  display: block;
-  margin: 20px auto;
+.cabecera h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  letter-spacing: 0.5px;
+  color: var(--limon);
+  text-shadow: 0 3px 0 var(--limon-oscuro), 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.icono-titulo {
+  font-size: 0.85em;
+  transform: rotate(-8deg);
+}
+
+.subtitulo {
+  margin: 10px auto 0;
+  max-width: 42ch;
+  font-size: 1.02rem;
+  color: rgba(253, 246, 227, 0.8);
 }
 
 .panel {
-  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 24px 0 18px;
 }
 
-.botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(2px);
+}
+
+.chip-puntaje {
+  border-color: rgba(246, 213, 31, 0.45);
+}
+
+.chip-vidas {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.chip-icono {
+  font-size: 1.15rem;
+}
+
+.marco-juego {
+  position: relative;
+  margin: 0 auto;
+  padding: 14px;
+  max-width: 640px;
+  border-radius: 26px;
+  background: linear-gradient(160deg, var(--hoja-oscura), var(--tinta) 55%);
+  border: 3px solid var(--limon);
+  box-shadow:
+    0 0 0 6px rgba(246, 213, 31, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.marco-juego__luz {
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  right: 22px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--limon), transparent);
+  opacity: 0.7;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background-color: #0c0817;
+  border: 2px solid rgba(246, 213, 31, 0.35);
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.boton {
+  padding: 12px 22px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tinta);
+  border: none;
+  border-radius: 14px;
   cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.boton-mover {
+  background: var(--limon);
+  box-shadow: 0 5px 0 var(--limon-oscuro);
+}
+
+.boton-mover:hover {
+  filter: brightness(1.05);
+}
+
+.boton-mover:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--limon-oscuro);
+}
+
+.boton-reiniciar {
+  background: var(--hoja);
+  color: var(--crema);
+  box-shadow: 0 5px 0 var(--hoja-oscura);
+}
+
+.boton-reiniciar:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--hoja-oscura);
+}
+
+.boton:focus-visible {
+  outline: 3px solid var(--crema);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boton {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    gap: 10px;
+  }
+  .chip {
+    padding: 6px 14px;
+    font-size: 0.95rem;
+  }
+  .boton {
+    padding: 10px 16px;
+    font-size: 0.92rem;
+  }
 }
