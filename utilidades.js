@@ -12,3 +12,17 @@ function mostrarEnSpan(idSpan, textoSpan){
     let componente = document.getElementById("idSpan");
     componente.textContent = textoSpan;
 }
+
+function graficarRectangulo(x,y,ancho,alto,color){
+    let xFloat = parseFloat(x);
+    let yFloat = parseFloat(y);
+    let anchoFloat = parseFloat(ancho);
+    let altoFloat = parseFloat(alto);
+
+    context.fillStyle = color
+    context.fillRect(xFloat,yFloat,anchoFloat,altoFloat)
+}
+
+function numeroAleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
